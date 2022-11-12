@@ -13,4 +13,14 @@ describe('Gallery is rendering', () => {
             <Gallery currentCategory={portrait} />
         );
     });
+
+    it('matches snapshot', () => {
+        const {asFragment} = render(<Gallery currentCategory={portrait} />);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('renders the correct title', () => {
+        render(<Gallery currentCategory={portrait} />);
+        expect(screen.getByTestId('h1tag')).toHaveTextContent('Portraits');
+    })
 });
